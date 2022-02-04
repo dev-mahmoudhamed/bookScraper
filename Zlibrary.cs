@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
+using System.IO;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -21,19 +21,21 @@ namespace test
             driver.FindElement(By.Id("searchFieldx")).SendKeys(searchKeyword + Keys.Enter);
             listBooks(ref driver);
 
-            for (int i = 2; i <= 10; i++)
+            for (int i = 2; i <= 2; i++)
             {
                 driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/div/div/div/div[3]/table/tbody/tr[1]/td[3]/table/tbody/tr[1]/td[" + i + "]/span/a")).Click();
                 listBooks(ref driver);
             }
 
-            foreach (KeyValuePair<int, string> item in booksURL)
+            foreach (KeyValuePair<int, string> item in booksInfo)
             {
                 Console.WriteLine(item.Key + " - " + item.Value);
             }
             driver.Quit();
             Console.WriteLine("\nEnter the numer of the book you want to download...");
-            int bookNumber = int.Parse(Console.ReadLine());
+            string bookNumerAsTxt = Console.ReadLine();
+            int bookNumber = Convert.ToInt32(bookNumerAsTxt);
+
             string BookURL = booksURL[bookNumber];
             Console.WriteLine("\n * " + BookURL);
             downloadBook(BookURL);
@@ -64,8 +66,24 @@ namespace test
             string bookName = driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/div/div/div/div[2]/div[1]/div[2]/h1")).Text;
             string downloadURL = driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/div/div/div/div[2]/div[2]/div[1]/div[1]/div/a")).GetAttribute("href");
             Console.WriteLine(downloadURL);
-            WebClient myWebClient = new WebClient();
-            myWebClient.DownloadFile(downloadURL, bookName);
+            driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/div/div/div/div[2]/div[2]/div[1]/div[1]/div/a")).Click();
+           
+
+           /* This function is copied from stackoverflow >> https://stackoverflow.com/a/29644840*/
+            var downloadsPath = Environment.GetEnvironmentVariable("USERPROFILE") + @"\Downloads\" + bookName;
+            for (var i = 0; i < 30; i++)
+            {
+                if (File.Exists(downloadsPath)) { break; }
+                Thread.Sleep(1000);
+            }
+            var length = new FileInfo(downloadsPath).Length;
+            for (var i = 0; i < 30; i++)
+            {
+                Thread.Sleep(1000);
+                var newLength = new FileInfo(downloadsPath).Length;
+                if (newLength == length && length != 0) { break; }
+                length = newLength;
+            }
             driver.Quit();
         }
     }
