@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 .vscode
 bin/ 	# ignore bin directory 
 *.obj 	# ignore any files with .obj postfix 
 obj
 bin
+=======
+.vscode
+bin/ 	# ignore bin directory 
+*.obj 	# ignore any files with .obj postfix 
+obj
+bin
+>>>>>>> 03343751cdf5d97433b6051eae4c3805cacdedce
