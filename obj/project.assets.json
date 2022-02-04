@@ -510,11 +510,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\test\\test.csproj",
-      "projectName": "test",
-      "projectPath": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\test\\test.csproj",
+      "projectUniqueName": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\Scraper\\Scraper.csproj",
+      "projectName": "Scraper",
+      "projectPath": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\Scraper\\Scraper.csproj",
       "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\test\\obj\\",
+      "outputPath": "C:\\Users\\Mahmoud\\OneDrive\\Desktop\\Scraper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",

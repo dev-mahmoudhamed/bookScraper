@@ -1,4 +1,5 @@
 ﻿using System;
+using Scraper;
 
 namespace test
 {
@@ -11,9 +12,9 @@ namespace test
             Console.WriteLine("What are you looking for ?");
             string searchKeyword = Console.ReadLine();
 
-            
-            eg1lib eg1lib = new eg1lib();
-            eg1lib.startServer(searchKeyword);
+            // Zlibrary.startServer(searchKeyword);
+            // SpringerLink.startServer(searchKeyword);
+
         }
     }
 }
