@@ -1,3 +1,5 @@
-.vscode/
+.vscode
 bin/ 	# ignore bin directory 
 *.obj 	# ignore any files with .obj postfix 
+obj
+bin
